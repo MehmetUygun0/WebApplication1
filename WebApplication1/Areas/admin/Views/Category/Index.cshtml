@@ -1,0 +1,46 @@
+﻿@model List<Category>
+@*@if (TempData["success"] != null)
+{
+	<h2>@TempData["success"]</h2>
+}   -----------   1. yöntem bu ama her sayfaya bunu teker teker yazmaktansa 
+aşağıdaki "kısmi görünüm" yöntemi çok daha basit akılllıca*@
+@*<partial name="_Notification" /> -------- bunuda her sayfaya yazmamak için layout.cshtml e ekledik*@
+
+<div class="container">
+		<div class="row pt-4 pb-3">
+			<div class="col-6"><h2 class="text-primary">Category List</h2></div>
+		<div class="col-6 text-end">
+			<a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+				YENİ KATOGARİİ OLLUSTURR
+			</a>
+		</div>
+		</div>
+<table class="table table-bordered table-striped">
+	<thead>
+	<tr>
+		<th>Category Name</th>
+		<th>Category Order</th>
+
+	</tr>
+	</thead>
+	<tbody>
+		@foreach(var obj in Model)
+		{
+		<tr>
+			<td>@obj.Name</td>
+			<td>@obj.DiplayOrder</td>
+			<td>
+				<div>
+				<a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+					EDİT
+				</a>
+							<a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+					DELETE
+				</a>
+				</div
+			></td>
+		</tr>
+		}
+	</tbody>
+</table>
+</div>

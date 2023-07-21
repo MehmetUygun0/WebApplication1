@@ -1,0 +1,32 @@
+﻿@model List<Product>
+@*@if (TempData["success"] != null)
+{
+	<h2>@TempData["success"]</h2>
+}   -----------   1. yöntem bu ama her sayfaya bunu teker teker yazmaktansa 
+aşağıdaki "kısmi görünüm" yöntemi çok daha basit akılllıca*@
+@*<partial name="_Notification" /> -------- bunuda her sayfaya yazmamak için layout.cshtml e ekledik*@
+
+<div class="container">
+		<div class="row pt-4 pb-3">
+			<div class="col-6"><h2 class="text-primary">Product List</h2></div>
+		<div class="col-6 text-end">
+			<a asp-controller="Product" asp-action="Upsert" class="btn btn-primary">
+				YENİ KATOGARİİ OLLUSTURR
+			</a>
+		</div>
+		</div>
+<table id="tblData"class="table table-bordered table-striped" style="width:100%">
+	<thead>
+	<tr>
+		<th>Title</th>
+		<th>ISBN</th>
+		<th>Price</th>
+		<th>Author</th>
+		<th>Category</th>
+	</tr>
+	</thead>
+</table>
+</div>
+@section Scripts{
+	<script src="~/js/product.js"></script>
+}
